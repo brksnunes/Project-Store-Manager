@@ -9,7 +9,7 @@ const getProductsById = async (req, res) => {
   const { id } = req.params;
   const { type, message } = await productsService.getById(id);
   if (type) return res.status(type).json({ message });
-  res.status(200).json(...message);
+  res.status(200).json(message[0]);
 };
 
 const insertProduct = async (req, res) => { 
