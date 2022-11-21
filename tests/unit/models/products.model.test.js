@@ -13,6 +13,14 @@ describe('Tests for the Model layer of "/products" route', function () {
       const response = await productModel.getAll();
       expect(response).to.be.deep.equal(productDatabase);
     });
+    });
+  
+    describe('Tests for "getById" function', function () {
+    it('Retrieves a specific product based on its id', async function () {
+      sinon.stub(connection, 'execute').resolves([product]);
+      const response = await productModel.getById(id);
+      expect(response).to.be.deep.equal(product);
+    });
   });
 
 });
