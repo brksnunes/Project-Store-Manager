@@ -17,4 +17,13 @@ describe('Tests for the Service layer of "/products" route', function () {
     });
   });
 
+    describe('Tests for "getById" function', function () {
+    it('Retrieves a specific product based on its id', async function () {
+      const result = { type: null, message: [product] }
+      sinon.stub(productModel, 'getById').resolves([product]);
+      const response = await productService.getById(id);
+      expect(response).to.be.deep.equal(result);
+    });
+  });
+
 });
